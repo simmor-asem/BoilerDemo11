@@ -1,0 +1,544 @@
+Name: OPCUAClient
+Id: g=5f572ff4bed34703bb8b4321304ba1a0
+Type: OPCUAClient
+Children:
+- Name: ServerEndpointURL
+  Id: g=b8fc66cba21f775c58270f5c8cfd5a63
+  Type: BaseDataVariableType
+  DataType: String
+  Value: "opc.tcp://127.0.0.1:48020"
+- Name: MinimumMessageSecurityMode
+  Id: g=81c90a3ccdb69951b4aa3113b483c7ef
+  Type: BaseDataVariableType
+  DataType: ns=28;MessageSecurityModeEnum
+  Value: 0
+- Name: MinimumSecurityPolicy
+  Id: g=d2f5e8087428a8a70d1604502c4aeb65
+  Type: BaseDataVariableType
+  DataType: ns=28;SecurityPolicyEnum
+  Value: 0
+- Name: UserIdentityType
+  Id: g=cc3687c5b9edbc216060c86ce2f8d655
+  Type: BaseDataVariableType
+  DataType: UserIdentityTypeEnum
+  Value: 0
+- Name: ConnectionStatus
+  Id: g=28e724311e3873f73cecd10c19060923
+  Type: BaseDataVariableType
+  DataType: ConnectionStatusEnum
+  AccessLevel: Read
+  Value: 0
+- Name: ServerUri
+  Id: g=5b9ddd2d523468762088cf18c5e3740c
+  Type: BaseDataVariableType
+  DataType: String
+  AccessLevel: Read
+  Value: ""
+- Name: Events
+  Id: g=69d870aa50bef784ecdaf4e63781a9fa
+  Type: BaseDataVariableType
+  DataType: EventsEnum
+  Value: 0
+- Name: RuntimeConfigurations
+  Id: g=024fbc9b8fb95e2ca71a1da23d49b867
+  Type: BaseObjectType
+- Class: Reference
+  Target: ns=28;i=8
+  Direction: Forward
+- Class: Reference
+  Target: ns=28;i=9
+  Direction: Forward
+- Class: Reference
+  Target: ns=28;i=54
+  Direction: Forward
+- Class: Reference
+  Target: ns=28;i=57
+  Direction: Forward
+- Class: Reference
+  Target: ns=28;i=91
+  Direction: Forward
+- Class: Reference
+  Target: ns=28;i=60
+  Direction: Forward
+- Class: Reference
+  Target: ns=28;i=63
+  Direction: Forward
+- Class: Reference
+  Target: ns=28;i=83
+  Direction: Forward
+- Class: Reference
+  Target: ns=28;i=75
+  Direction: Forward
+- Name: VerifyServerIdentity
+  Id: g=055891d6ab4fc4f1a9c69b13eb8d8f42
+  Type: BaseDataVariableType
+  DataType: Boolean
+  Value: false
+- Name: Objects
+  Id: g=a9f8486b686e8cffc0c8d64d962ebaae
+  Type: BaseObjectType
+  Children:
+  - File: Demo/Demo.yaml
+  - Name: TemperatureSensorType
+    Id: ns=45;i=1001
+    Supertype: BaseObjectType
+    DisplayName: {"LocaleId":"","Text":"TemperatureSensorType"}
+    Children:
+    - Name: ns=45;Temperature
+      Id: ns=45;i=6001
+      Type: AnalogItemType
+      DataType: Double
+      DisplayName: {"LocaleId":"","Text":"Temperature"}
+      Value: 0.0
+      Children:
+      - Name: Definition
+        Id: ns=45;i=6005
+        Type: PropertyType
+        DataType: String
+        DisplayName: {"LocaleId":"","Text":"Definition"}
+        Description: {"LocaleId":"","Text":"A vendor-specific, human readable string that specifies how the value of this DataItem is calculated."}
+        ModellingRule: Optional
+        Value: ""
+      - Name: EngineeringUnits
+        Id: ns=45;i=6002
+        Type: EUInformationType
+        DataType: EUInformation
+        DisplayName: {"LocaleId":"","Text":"EngineeringUnits"}
+        ModellingRule: Optional
+        Value: {"TypeId":{"Id":887},"Body":{"namespaceUri":"","unitId":0,"displayName":{"NamespaceIndex":-1,"LocaleId":"","Text":""},"description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}
+        Children:
+        - Name: UnitId
+          Id: g=0e24b5656c3e208ee6727f338157b9d9
+          Type: BaseVariableType
+          DataType: Int32
+          OwnerId: ns=45;i=6002
+          ReferenceType: HasProperty
+          Value: 0
+        - Name: DisplayName
+          Id: g=cf45314103bc2360e57aa91479aafb7c
+          Type: BaseVariableType
+          DataType: LocalizedText
+          OwnerId: ns=45;i=6002
+          ReferenceType: HasProperty
+          Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+        - Name: Description
+          Id: g=77da85d06cc51ef4f24ec3542a28d300
+          Type: BaseVariableType
+          DataType: LocalizedText
+          OwnerId: ns=45;i=6002
+          ReferenceType: HasProperty
+          Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+      - Name: EURange
+        Id: ns=45;i=6003
+        Type: RangeType
+        DataType: EURange
+        DisplayName: {"LocaleId":"","Text":"EURange"}
+        Value: {"TypeId":{"Id":884},"Body":{"low":0.0,"high":100.0}}
+        Children:
+        - Name: Low
+          Id: g=d0bf036ab1b8555ce8d73760206ce366
+          Type: BaseVariableType
+          DataType: Double
+          OwnerId: ns=45;i=6003
+          ReferenceType: HasProperty
+          Value: 0.0
+        - Name: High
+          Id: g=8979f004768822343c3464c1f1596af7
+          Type: BaseVariableType
+          DataType: Double
+          OwnerId: ns=45;i=6003
+          ReferenceType: HasProperty
+          Value: 100.0
+      - Name: InstrumentRange
+        Id: ns=45;i=6004
+        Type: RangeType
+        DataType: EURange
+        DisplayName: {"LocaleId":"","Text":"InstrumentRange"}
+        ModellingRule: Optional
+        Value: {"TypeId":{"Id":884},"Body":{"low":0.0,"high":0.0}}
+        Children:
+        - Name: Low
+          Id: g=4bbcd306ba82c8d23cebd452a3104a5f
+          Type: BaseVariableType
+          DataType: Double
+          OwnerId: ns=45;i=6004
+          ReferenceType: HasProperty
+          Value: 0.0
+        - Name: High
+          Id: g=aca52888162a84b74269a1fc4e88714d
+          Type: BaseVariableType
+          DataType: Double
+          OwnerId: ns=45;i=6004
+          ReferenceType: HasProperty
+          Value: 0.0
+      - Name: ValuePrecision
+        Id: ns=45;i=6006
+        Type: PropertyType
+        DataType: Double
+        DisplayName: {"LocaleId":"","Text":"ValuePrecision"}
+        Description: {"LocaleId":"","Text":"The maximum precision that the server can maintain for the item based on restrictions in the target environment."}
+        ModellingRule: Optional
+        Value: 0.0
+  - Class: DataType
+    Name: HeaterStatus
+    Id: ns=45;i=3001
+    Supertype: Enumeration
+    DisplayName: {"LocaleId":"","Text":"HeaterStatus"}
+    Children:
+    - Name: ns=0;EnumStrings
+      Id: ns=45;i=6028
+      Type: PropertyType
+      DataType: LocalizedText
+      DisplayName: {"LocaleId":"","Text":"EnumStrings"}
+      ValueRank: OneDimension
+      ArrayDimensions: [3]
+      Value: [{"LocaleId":"","Text":"Off"},{"LocaleId":"","Text":"Heating"},{"LocaleId":"","Text":"Cooling"}]
+  - Name: FillLevelSensorType
+    Id: ns=45;i=1002
+    Supertype: BaseObjectType
+    DisplayName: {"LocaleId":"","Text":"FillLevelSensorType"}
+    Children:
+    - Name: ns=45;FillLevel
+      Id: ns=45;i=6007
+      Type: AnalogItemType
+      DataType: Double
+      DisplayName: {"LocaleId":"","Text":"FillLevel"}
+      Value: 0.0
+      Children:
+      - Name: Definition
+        Id: ns=45;i=6011
+        Type: PropertyType
+        DataType: String
+        DisplayName: {"LocaleId":"","Text":"Definition"}
+        Description: {"LocaleId":"","Text":"A vendor-specific, human readable string that specifies how the value of this DataItem is calculated."}
+        ModellingRule: Optional
+        Value: ""
+      - Name: EngineeringUnits
+        Id: ns=45;i=6008
+        Type: EUInformationType
+        DataType: EUInformation
+        DisplayName: {"LocaleId":"","Text":"EngineeringUnits"}
+        ModellingRule: Optional
+        Value: {"TypeId":{"Id":887},"Body":{"namespaceUri":"","unitId":0,"displayName":{"NamespaceIndex":-1,"LocaleId":"","Text":""},"description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}
+        Children:
+        - Name: UnitId
+          Id: g=f5611906d71ae1724262d6f73273959f
+          Type: BaseVariableType
+          DataType: Int32
+          OwnerId: ns=45;i=6008
+          ReferenceType: HasProperty
+          Value: 0
+        - Name: DisplayName
+          Id: g=7204a9323077f8eada6f91f944ade7be
+          Type: BaseVariableType
+          DataType: LocalizedText
+          OwnerId: ns=45;i=6008
+          ReferenceType: HasProperty
+          Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+        - Name: Description
+          Id: g=ea5bf3f997037a1abfee1420c7bf88bb
+          Type: BaseVariableType
+          DataType: LocalizedText
+          OwnerId: ns=45;i=6008
+          ReferenceType: HasProperty
+          Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+      - Name: EURange
+        Id: ns=45;i=6009
+        Type: RangeType
+        DataType: EURange
+        DisplayName: {"LocaleId":"","Text":"EURange"}
+        Value: {"TypeId":{"Id":884},"Body":{"low":0.0,"high":0.0}}
+        Children:
+        - Name: Low
+          Id: g=015d57a2092ec50067339a1c1b7b8099
+          Type: BaseVariableType
+          DataType: Double
+          OwnerId: ns=45;i=6009
+          ReferenceType: HasProperty
+          Value: 0.0
+        - Name: High
+          Id: g=241542546b605115ae0c1b760fb79cbb
+          Type: BaseVariableType
+          DataType: Double
+          OwnerId: ns=45;i=6009
+          ReferenceType: HasProperty
+          Value: 0.0
+      - Name: InstrumentRange
+        Id: ns=45;i=6010
+        Type: RangeType
+        DataType: EURange
+        DisplayName: {"LocaleId":"","Text":"InstrumentRange"}
+        ModellingRule: Optional
+        Value: {"TypeId":{"Id":884},"Body":{"low":0.0,"high":0.0}}
+        Children:
+        - Name: Low
+          Id: g=06496f2e26793af4f9ba5d9cc85d18cf
+          Type: BaseVariableType
+          DataType: Double
+          OwnerId: ns=45;i=6010
+          ReferenceType: HasProperty
+          Value: 0.0
+        - Name: High
+          Id: g=8b3457786cc97854f4a1744a59d935cb
+          Type: BaseVariableType
+          DataType: Double
+          OwnerId: ns=45;i=6010
+          ReferenceType: HasProperty
+          Value: 0.0
+      - Name: ValuePrecision
+        Id: ns=45;i=6012
+        Type: PropertyType
+        DataType: Double
+        DisplayName: {"LocaleId":"","Text":"ValuePrecision"}
+        Description: {"LocaleId":"","Text":"The maximum precision that the server can maintain for the item based on restrictions in the target environment."}
+        ModellingRule: Optional
+        Value: 0.0
+  - Name: BoilerType
+    Id: ns=45;i=1003
+    Supertype: BaseObjectType
+    DisplayName: {"LocaleId":"","Text":"BoilerType"}
+    Children:
+    - Class: Method
+      Name: ns=45;Fill
+      Id: ns=45;i=7002
+      DisplayName: {"LocaleId":"","Text":"Fill"}
+      Children:
+      - Name: ns=0;InputArguments
+        Id: ns=45;i=6029
+        Type: PropertyType
+        DataType: Argument
+        DisplayName: {"LocaleId":"","Text":"InputArguments"}
+        ValueRank: OneDimension
+        ArrayDimensions: [1]
+        Value: [{"TypeId":{"Id":296},"Body":{"Name":"SetPoint","DataType":{"Id":11},"ValueRank":-1,"ArrayDimensions":[],"Description":{"LocaleId":"","Text":"FillLevel Setpoint [l]"}}}]
+    - Name: ns=45;FillLevelSensor
+      Id: ns=45;i=5002
+      Type: FillLevelSensorType
+      DisplayName: {"LocaleId":"","Text":"FillLevelSensor"}
+      Children:
+      - Name: FillLevel
+        Id: ns=45;i=6019
+        Type: AnalogItemType
+        DataType: Double
+        DisplayName: {"LocaleId":"","Text":"FillLevel"}
+        Value: 0.0
+        Children:
+        - Name: Definition
+          Id: ns=45;i=6020
+          Type: PropertyType
+          DataType: String
+          DisplayName: {"LocaleId":"","Text":"Definition"}
+          Description: {"LocaleId":"","Text":"A vendor-specific, human readable string that specifies how the value of this DataItem is calculated."}
+          ModellingRule: Optional
+          Value: ""
+        - Name: EngineeringUnits
+          Id: ns=45;i=6021
+          Type: EUInformationType
+          DataType: EUInformation
+          DisplayName: {"LocaleId":"","Text":"EngineeringUnits"}
+          ModellingRule: Optional
+          Value: {"TypeId":{"Id":887},"Body":{"namespaceUri":"","unitId":0,"displayName":{"NamespaceIndex":-1,"LocaleId":"","Text":""},"description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}
+          Children:
+          - Name: UnitId
+            Id: g=ce822a74f0148ddd56031462e7aa2c86
+            Type: BaseVariableType
+            DataType: Int32
+            OwnerId: ns=45;i=6021
+            ReferenceType: HasProperty
+            Value: 0
+          - Name: DisplayName
+            Id: g=41b67c5fc3b89c09bfbb0ce8cbedd69a
+            Type: BaseVariableType
+            DataType: LocalizedText
+            OwnerId: ns=45;i=6021
+            ReferenceType: HasProperty
+            Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+          - Name: Description
+            Id: g=afb7e5e120a3a6a6c07bbd9ba587e3ca
+            Type: BaseVariableType
+            DataType: LocalizedText
+            OwnerId: ns=45;i=6021
+            ReferenceType: HasProperty
+            Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+        - Name: EURange
+          Id: ns=45;i=6022
+          Type: RangeType
+          DataType: EURange
+          DisplayName: {"LocaleId":"","Text":"EURange"}
+          Value: {"TypeId":{"Id":884},"Body":{"low":0.0,"high":0.0}}
+          Children:
+          - Name: Low
+            Id: g=f46ef31484171b289599e0cdc14acc60
+            Type: BaseVariableType
+            DataType: Double
+            OwnerId: ns=45;i=6022
+            ReferenceType: HasProperty
+            Value: 0.0
+          - Name: High
+            Id: g=1c7a2ba2aef91003cd6e9edd0df4c3eb
+            Type: BaseVariableType
+            DataType: Double
+            OwnerId: ns=45;i=6022
+            ReferenceType: HasProperty
+            Value: 0.0
+        - Name: InstrumentRange
+          Id: ns=45;i=6023
+          Type: RangeType
+          DataType: EURange
+          DisplayName: {"LocaleId":"","Text":"InstrumentRange"}
+          ModellingRule: Optional
+          Value: {"TypeId":{"Id":884},"Body":{"low":0.0,"high":0.0}}
+          Children:
+          - Name: Low
+            Id: g=03ef5582f69915b330ab6c93fb910286
+            Type: BaseVariableType
+            DataType: Double
+            OwnerId: ns=45;i=6023
+            ReferenceType: HasProperty
+            Value: 0.0
+          - Name: High
+            Id: g=436ee6cbcdb38a840ffefe8b12f10f38
+            Type: BaseVariableType
+            DataType: Double
+            OwnerId: ns=45;i=6023
+            ReferenceType: HasProperty
+            Value: 0.0
+        - Name: ValuePrecision
+          Id: ns=45;i=6024
+          Type: PropertyType
+          DataType: Double
+          DisplayName: {"LocaleId":"","Text":"ValuePrecision"}
+          Description: {"LocaleId":"","Text":"The maximum precision that the server can maintain for the item based on restrictions in the target environment."}
+          ModellingRule: Optional
+          Value: 0.0
+    - Name: ns=45;FillLevelSetPoint
+      Id: ns=45;i=6025
+      Type: BaseDataVariableType
+      DataType: Double
+      DisplayName: {"LocaleId":"","Text":"FillLevelSetPoint"}
+      Value: 0.0
+    - Class: Method
+      Name: ns=45;Heat
+      Id: ns=45;i=7001
+      DisplayName: {"LocaleId":"","Text":"Heat"}
+      Children:
+      - Name: ns=0;InputArguments
+        Id: ns=45;i=6030
+        Type: PropertyType
+        DataType: Argument
+        DisplayName: {"LocaleId":"","Text":"InputArguments"}
+        ValueRank: OneDimension
+        ArrayDimensions: [1]
+        Value: [{"TypeId":{"Id":296},"Body":{"Name":"SetPoint","DataType":{"Id":11},"ValueRank":-1,"ArrayDimensions":[],"Description":{"LocaleId":"","Text":"Temperature Setpoint [°C]"}}}]
+    - Name: ns=45;HeaterStatus
+      Id: ns=45;i=6027
+      Type: BaseDataVariableType
+      DataType: HeaterStatus
+      DisplayName: {"LocaleId":"","Text":"HeaterStatus"}
+      Value: 0
+    - Name: ns=45;TemperatureSensor
+      Id: ns=45;i=5001
+      Type: TemperatureSensorType
+      DisplayName: {"LocaleId":"","Text":"TemperatureSensor"}
+      Children:
+      - Name: Temperature
+        Id: ns=45;i=6013
+        Type: AnalogItemType
+        DataType: Double
+        DisplayName: {"LocaleId":"","Text":"Temperature"}
+        Value: 0.0
+        Children:
+        - Name: Definition
+          Id: ns=45;i=6014
+          Type: PropertyType
+          DataType: String
+          DisplayName: {"LocaleId":"","Text":"Definition"}
+          Description: {"LocaleId":"","Text":"A vendor-specific, human readable string that specifies how the value of this DataItem is calculated."}
+          ModellingRule: Optional
+          Value: ""
+        - Name: EngineeringUnits
+          Id: ns=45;i=6015
+          Type: EUInformationType
+          DataType: EUInformation
+          DisplayName: {"LocaleId":"","Text":"EngineeringUnits"}
+          ModellingRule: Optional
+          Value: {"TypeId":{"Id":887},"Body":{"namespaceUri":"","unitId":0,"displayName":{"NamespaceIndex":-1,"LocaleId":"","Text":""},"description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}
+          Children:
+          - Name: UnitId
+            Id: g=07444196e7c53ecfde98c0d8cedcec77
+            Type: BaseVariableType
+            DataType: Int32
+            OwnerId: ns=45;i=6015
+            ReferenceType: HasProperty
+            Value: 0
+          - Name: DisplayName
+            Id: g=ac7611ebe8aae05f2cfe5670ad586115
+            Type: BaseVariableType
+            DataType: LocalizedText
+            OwnerId: ns=45;i=6015
+            ReferenceType: HasProperty
+            Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+          - Name: Description
+            Id: g=1722486a8b854a4779de8e6b37923a4b
+            Type: BaseVariableType
+            DataType: LocalizedText
+            OwnerId: ns=45;i=6015
+            ReferenceType: HasProperty
+            Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+        - Name: EURange
+          Id: ns=45;i=6016
+          Type: RangeType
+          DataType: EURange
+          DisplayName: {"LocaleId":"","Text":"EURange"}
+          Value: {"TypeId":{"Id":884},"Body":{"low":0.0,"high":100.0}}
+          Children:
+          - Name: Low
+            Id: g=d2eac7cb71f4515584ae89218fb61f0e
+            Type: BaseVariableType
+            DataType: Double
+            OwnerId: ns=45;i=6016
+            ReferenceType: HasProperty
+            Value: 0.0
+          - Name: High
+            Id: g=ae4d19fd7577148de835e20d8623c271
+            Type: BaseVariableType
+            DataType: Double
+            OwnerId: ns=45;i=6016
+            ReferenceType: HasProperty
+            Value: 100.0
+        - Name: InstrumentRange
+          Id: ns=45;i=6017
+          Type: RangeType
+          DataType: EURange
+          DisplayName: {"LocaleId":"","Text":"InstrumentRange"}
+          ModellingRule: Optional
+          Value: {"TypeId":{"Id":884},"Body":{"low":0.0,"high":0.0}}
+          Children:
+          - Name: Low
+            Id: g=88e2b55b74af2c542eaed18775940227
+            Type: BaseVariableType
+            DataType: Double
+            OwnerId: ns=45;i=6017
+            ReferenceType: HasProperty
+            Value: 0.0
+          - Name: High
+            Id: g=8d2b930312333a07a0dc4efb0ae9320e
+            Type: BaseVariableType
+            DataType: Double
+            OwnerId: ns=45;i=6017
+            ReferenceType: HasProperty
+            Value: 0.0
+        - Name: ValuePrecision
+          Id: ns=45;i=6018
+          Type: PropertyType
+          DataType: Double
+          DisplayName: {"LocaleId":"","Text":"ValuePrecision"}
+          Description: {"LocaleId":"","Text":"The maximum precision that the server can maintain for the item based on restrictions in the target environment."}
+          ModellingRule: Optional
+          Value: 0.0
+    - Name: ns=45;TemperatureSetPoint
+      Id: ns=45;i=6026
+      Type: BaseDataVariableType
+      DataType: Double
+      DisplayName: {"LocaleId":"","Text":"TemperatureSetPoint"}
+      Value: 0.0
